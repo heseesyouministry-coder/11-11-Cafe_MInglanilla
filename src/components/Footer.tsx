@@ -3,7 +3,7 @@ import { ArrowUp, ExternalLink, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (
@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="#gallery" className="hover:text-[#C9A227] transition-colors">
-                  Atmosphere & Gallery
+                  Customer Snapshots
                 </a>
               </li>
               <li>
@@ -99,10 +99,10 @@ export const Footer: React.FC = () => {
         {/* Minimal Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
           <p className="text-center sm:text-left">
-            Concept design by <span className="text-stone-300 font-medium">Clint Aldwin Maurin</span> — unofficial fan reference for 11:11 Cafe Minglanilla.
+            11:11 Cafe Minglanilla — Sangi, Minglanilla, Cebu, Philippines.
           </p>
           <p className="text-center sm:text-right text-stone-500 font-mono text-[11px]">
-            © {new Date().getFullYear()} 11:11 Cafe • Minglanilla, Cebu
+            © {new Date().getFullYear()} 11:11 Cafe • Open Daily
           </p>
         </div>
       </div>

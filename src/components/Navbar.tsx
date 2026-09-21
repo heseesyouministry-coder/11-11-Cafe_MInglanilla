@@ -21,7 +21,7 @@ export const Navbar: React.FC = () => {
         hour12: true,
       });
 
-      // 24-hour hour & minute extraction
+      // 24-hour extraction
       const partsFormatter = new Intl.DateTimeFormat('en-US', {
         timeZone: 'Asia/Manila',
         hour: 'numeric',
@@ -33,11 +33,11 @@ export const Navbar: React.FC = () => {
       const h24 = parseInt(parts.find((p) => p.type === 'hour')?.value || '12', 10);
       const min = parseInt(parts.find((p) => p.type === 'minute')?.value || '0', 10);
 
-      // Open: 7:00 AM – 1:00 AM (07:00 to 23:59, plus 00:00 to 00:59)
+      // Open: 7:00 AM – 1:00 AM
       const open = h24 >= 7 || h24 === 0;
       setIsOpenNow(open);
 
-      // Check if current 12-hr time is 11:11 (AM or PM)
+      // Check if current 12-hr time is exactly 11:11 (AM or PM)
       const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
       const wishTime = h12 === 11 && min === 11;
       setIs1111(wishTime);
@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Scroll listener for subtle elevation
+  // Scroll listener for subtle header elevation
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -62,7 +62,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Menu', href: '#menu' },
     { label: 'Story', href: '#story' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Customer Snapshots', href: '#gallery' },
     { label: 'Visit Us', href: '#visit-us' },
   ];
 
@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
     const target = document.querySelector(href);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView();
     }
   };
 
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-        {/* Left: Brand */}
+        {/* Brand */}
         <a
           href="#"
           className="group flex flex-col items-start leading-tight select-none"
@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
           </span>
         </a>
 
-        {/* Center: Navigation Links */}
+        {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-[#5C4433]">
           {navLinks.map((link) => (
             <button
@@ -109,21 +109,21 @@ export const Navbar: React.FC = () => {
           ))}
         </nav>
 
-        {/* Right: Live Clock Detail + Visit Us CTA */}
+        {/* Live Manila Clock Detail + Visit Us CTA */}
         <div className="hidden sm:flex items-center gap-5">
           {/* Subtle Live Manila Clock */}
           <div
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono transition-all ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all ${
               is1111
-                ? 'bg-[#C9A227]/20 text-[#2D1F17] font-bold border border-[#C9A227]/50 shadow-sm animate-pulse'
+                ? 'bg-[#C9A227]/20 text-[#2D1F17] font-bold border border-[#C9A227]/50 shadow-sm'
                 : 'bg-black/5 text-[#5C4433] border border-[#3B2A20]/10'
             }`}
-            title="Asia/Manila Local Time (Open 7:00 AM – 1:00 AM)"
+            title="Asia/Manila Local Time (Open Daily 7:00 AM – 1:00 AM)"
           >
             {is1111 ? (
-              <span className="flex items-center gap-1 text-[#C9A227]">
-                <Sparkles size={12} className="animate-spin" />
-                <span className="text-[#2D1F17] font-semibold">11:11 · Make a wish ✦</span>
+              <span className="flex items-center gap-1.5 text-[#2D1F17]">
+                <Sparkles size={13} className="text-[#C9A227]" />
+                <span>11:11 · Make a wish ✦</span>
               </span>
             ) : (
               <>
@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
                 <span className="flex items-center gap-1.5">
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
-                      isOpenNow ? 'bg-emerald-600' : 'bg-amber-600'
+                      isOpenNow ? 'bg-emerald-600' : 'bg-stone-400'
                     }`}
                   />
                   <span className="font-sans text-[11px] font-medium text-[#2D1F17]">
@@ -152,16 +152,21 @@ export const Navbar: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile: Hamburger Button */}
+        {/* Mobile: Clock badge + Hamburger Button */}
         <div className="flex sm:hidden items-center gap-2">
-          {/* Compact clock badge on mobile */}
           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/5 text-[11px] font-mono text-[#5C4433]">
-            <span>{manilaTimeStr}</span>
-            <span
-              className={`w-1.5 h-1.5 rounded-full ${
-                isOpenNow ? 'bg-emerald-600' : 'bg-amber-600'
-              }`}
-            />
+            {is1111 ? (
+              <span className="text-[#C9A227] font-semibold">11:11 ✦</span>
+            ) : (
+              <>
+                <span>{manilaTimeStr}</span>
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    isOpenNow ? 'bg-emerald-600' : 'bg-stone-400'
+                  }`}
+                />
+              </>
+            )}
           </div>
 
           <button

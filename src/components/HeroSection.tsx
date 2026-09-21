@@ -12,30 +12,30 @@ export const HeroSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.0 } });
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
 
       tl.fromTo(
         headlineRef.current,
-        { opacity: 0, y: 35 },
+        { opacity: 0, y: 30 },
         { opacity: 1, y: 0, delay: 0.1 }
       )
         .fromTo(
           subtitleRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          '-=0.7'
-        )
-        .fromTo(
-          actionsRef.current,
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.8 },
           '-=0.6'
         )
         .fromTo(
+          actionsRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.5'
+        )
+        .fromTo(
           threeWrapperRef.current,
-          { opacity: 0, scale: 0.92 },
-          { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' },
-          '-=0.9'
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: 'power2.out' },
+          '-=0.8'
         );
     }, containerRef);
 
@@ -44,13 +44,13 @@ export const HeroSection: React.FC = () => {
 
   const scrollTo = (selector: string) => {
     const el = document.querySelector(selector);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) el.scrollIntoView();
   };
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[92vh] pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center overflow-hidden"
+      className="relative min-h-[90vh] pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex items-center overflow-hidden"
     >
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         {/* Left Column: Editorial Typography & CTAs */}
@@ -59,7 +59,7 @@ export const HeroSection: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/15 text-[#786017] text-xs font-semibold tracking-wider uppercase mb-6 border border-[#C9A227]/30">
             <span>Minglanilla, Cebu</span>
             <span className="opacity-40">•</span>
-            <span>Open 7 AM – 1 AM</span>
+            <span>Open Daily 7 AM – 1 AM</span>
           </div>
 
           {/* Headline */}
