@@ -1,6 +1,6 @@
 {
   "name": "11:11 Cafe — Minglanilla",
-  "description": "An interactive digital experience for 11:11 Cafe in Minglanilla featuring interactive 3D coffee visualizer with Three.js, Lenis smooth scrolling, GSAP and Framer Motion animations, artisanal menu, and interactive wish & reservation features.",
+  "description": "A warm, editorial one-page cafe landing page for 11:11 Cafe in Minglanilla, Cebu. Features an interactive 3D Three.js coffee centerpiece, GSAP scroll animations, Lenis smooth scrolling, subtle Asia/Manila live clock, featured menu, story, atmosphere gallery, and Google Maps directions.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
