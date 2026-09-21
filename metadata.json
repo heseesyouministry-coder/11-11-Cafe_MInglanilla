@@ -1,0 +1,6 @@
+{
+  "name": "11:11 Cafe — Minglanilla",
+  "description": "An interactive digital experience for 11:11 Cafe in Minglanilla featuring interactive 3D coffee visualizer with Three.js, Lenis smooth scrolling, GSAP and Framer Motion animations, artisanal menu, and interactive wish & reservation features.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
